@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#3b102d">
+<title>Future Mrs. ❤️ — Serious Questions</title>
+<style>
+:root{--pink:#ff6b9d;--rose:#ffd0df;--cream:#fff8fb;--ink:#38152c;--purple:#6b2c59}
+*{box-sizing:border-box} body{margin:0;min-height:100vh;font-family:ui-rounded,"Segoe UI",system-ui,sans-serif;color:var(--ink);background:radial-gradient(circle at 15% 10%,#ffbfd5 0,transparent 28%),radial-gradient(circle at 90% 85%,#b68bce 0,transparent 30%),linear-gradient(135deg,#fff1f6,#f8eaff);overflow-x:hidden}
+.floaties{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}.floaties span{position:absolute;bottom:-40px;animation:floatUp linear infinite;opacity:.55;font-size:22px}@keyframes floatUp{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+.wrap{position:relative;z-index:1;width:min(760px,92%);margin:28px auto 50px}.hero,.panel{background:#ffffffd9;backdrop-filter:blur(12px);border:1px solid #ffffffb8;border-radius:26px;box-shadow:0 18px 55px #65234b1c;padding:clamp(20px,5vw,36px)}
+.hero{text-align:center;margin-bottom:18px}.eyebrow{letter-spacing:2px;text-transform:uppercase;font-size:.76rem;color:#9a4776;font-weight:800}.hero h1{font-size:clamp(2rem,7vw,3.3rem);line-height:1.05;margin:12px 0;color:#6d214f}.hero p{line-height:1.65;max-width:590px;margin:12px auto}.pill{display:inline-block;border-radius:99px;background:#ffe0eb;padding:7px 12px;font-size:.82rem;font-weight:700}
+button{font:inherit;cursor:pointer;border:0}.primary{background:linear-gradient(135deg,#ef4f8c,#a63c87);color:white;border-radius:15px;padding:13px 20px;font-weight:800;box-shadow:0 8px 18px #ce4d8c35;transition:.18s}.primary:hover{transform:translateY(-2px)}.soft{background:#fff0f6;color:#7b2b56;border:1px solid #f4c5d8;border-radius:13px;padding:10px 14px;font-weight:700}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}.progress{height:8px;background:#f7dce8;border-radius:99px;overflow:hidden;margin:12px 0 22px}.bar{height:100%;width:0;background:linear-gradient(90deg,#f25b95,#9b4bb0);transition:width .4s}
+.qnum{font-size:.82rem;color:#9a4776;font-weight:900;letter-spacing:1px}.question{font-size:clamp(1.35rem,4vw,1.85rem);line-height:1.25;margin:10px 0}.story{line-height:1.75;color:#68475b;white-space:pre-line;margin-bottom:22px}.options{display:grid;gap:11px}.option{width:100%;text-align:left;display:flex;align-items:center;gap:12px;padding:15px;border:1.5px solid #f0cada;background:#fffafd;border-radius:16px;color:#50213f;transition:.18s}.option:hover{border-color:#dc6b9c;transform:translateY(-1px)}.letter{width:32px;height:32px;display:grid;place-items:center;flex-shrink:0;background:#ffe2ed;color:#9a3268;border-radius:10px;font-weight:900}.option.correct{background:#eafff2;border-color:#51b77d}.option.wrong{animation:shake .32s;border-color:#ef6a7f;background:#fff0f1}@keyframes shake{25%,75%{transform:translateX(-4px)}50%{transform:translateX(4px)}}
+.feedback{min-height:26px;margin:14px 2px;font-weight:800;color:#a33a70}.tiny{font-size:.88rem;color:#88677b;line-height:1.55}.hidden{display:none!important}.final-title{font-size:2rem;text-align:center;color:#7a2455}.notegrid{display:grid;gap:14px;margin-top:18px}.field label{display:block;font-weight:800;margin:0 0 7px;color:#713653}.field textarea,.field input{width:100%;border:1.5px solid #ecc4d7;border-radius:13px;padding:12px 13px;background:#fffafd;font:inherit;color:#49213a;outline:none}.field textarea:focus,.field input:focus{border-color:#d65391;box-shadow:0 0 0 3px #f8d4e5}.field textarea{min-height:92px;resize:vertical}.finalactions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.resultbox{background:#fff4f8;border:1px dashed #e5a6c3;border-radius:16px;padding:14px;margin-top:16px;white-space:pre-wrap;line-height:1.55}.footer{text-align:center;padding:18px;color:#875b75;font-size:.83rem}
+@media(max-width:500px){.topline{align-items:flex-start;flex-direction:column}.hero,.panel{border-radius:22px}}
+</style>
+</head>
+<body>
+<div class="floaties" id="floaties"></div>
+<main class="wrap">
+<section class="hero" id="intro">
+<div class="eyebrow">A tiny love quiz • just for you</div>
+<h1>Achha suno, <br>Future Mrs. ❤️</h1>
+<div class="pill">5 serious sawaal + ek dil ki baat 🥹</div>
+<p>Madam ji, aaj answers soch-samajh kar dena. Har sawaal ke options har baar shuffle honge… aur suspense bhi hoga! 😤😂❤️</p>
+<p class="tiny">Headphones optional 🎧 · Sound start karne ke liye button dabana. Har question mein “dil wala answer” dhoondhna hai. Galat hua toh phir se try kar sakti ho. 💗</p>
+<button class="primary" id="startBtn">Chalo shuru karein 💌</button>
+</section>
+
+<section class="panel hidden" id="quiz">
+<div class="topline"><span class="pill" id="stepPill">Question 1 of 5</span><button class="soft" id="soundBtn" aria-pressed="true">🔊 Sound on</button></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div class="qnum" id="qnum">SAWAAL 01</div>
+<h2 class="question" id="question"></h2>
+<p class="story" id="story"></p>
+<div class="options" id="options"></div>
+<div class="feedback" id="feedback" aria-live="polite"></div>
+<p class="tiny" id="hint">Hint: dil ki suno, madam ji. 💗</p>
+<div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="primary hidden" id="nextBtn">Agla sawaal ❤️</button></div>
+</section>
+
+<section class="panel hidden" id="notePanel">
+<div class="eyebrow" style="text-align:center">Last question, but most important</div>
+<h2 class="final-title">Ab tumhari baari, meri jaan. 💗</h2>
+<p style="line-height:1.75">Quiz toh bas bahaana tha. Ab apne dil ki baat likho — tumhare sapne, feelings, favourite things, aur woh chhoti-chhoti cheezein jo tum chahti ho ki main samjhun. Yahan koi wrong answer nahi hai. 🫂❤️</p>
+<div class="notegrid">
+<div class="field"><label for="dreams">🌙 Tumhare sapne aur future wishes</label><textarea id="dreams" placeholder="Tum future mein kya-kya jeena, paana ya experience karna chahti ho?"></textarea></div>
+<div class="field"><label for="feelings">💌 Tumhari feelings — jo dil mein hai</label><textarea id="feelings" placeholder="Mere baare mein, humare connection ke baare mein, ya apne dil ki koi bhi baat…"></textarea></div>
+<div class="field"><label for="favorites">🍓 Tumhari favourite things</label><textarea id="favorites" placeholder="Favourite food, songs, places, flowers, dates, surprises, comfort things…"></textarea></div>
+<div class="field"><label for="needs">🫶 Tumhe pyaar kaise feel hota hai?</label><textarea id="needs" placeholder="Quality time, words, hugs, care, space, reassurance… jo tumhare liye important ho."></textarea></div>
+<div class="field"><label for="note">❤️ Mere liye ek personal note</label><textarea id="note" placeholder="Jo bhi kehna chahti ho, bina kisi pressure ke likho…"></textarea></div>
+</div>
+<div class="finalactions"><button class="primary" id="saveBtn">Mera note tayyar karo 💌</button><button class="soft" id="copyBtn">Note copy karo</button><button class="soft" id="restartBtn">Phir se khelein ↻</button></div>
+<div class="resultbox hidden" id="result" aria-live="polite"></div>
+<p class="tiny" style="margin-top:14px">Privacy note: Yeh page tumhari entries kisi server par send nahi karta. Note isi browser page mein banta hai; copy karke apni marzi se share karna. 💗</p>
+</section>
+<div class="footer">Made with extra pyaar, thodi nautanki aur unlimited lifetime membership 😂💋</div>
+</main>
+<script>
+const questions = [
+ {q:"Q1. Subah uthkar sabse pehle kya karogi? 😭💗",story:"Agar kal se hum saath rehne lage, toh subah ka scene kya hoga? Aur agar main hug karke wapas so gaya toh? 🫂",options:[
+  {t:"Pehle pyaar se good morning kiss, phir cuddle. 🥹",ok:true},
+  {t:"Neend kharaab karke khud maze loongi. 😂"},
+  {t:"Tumhe blanket mein roll karke sone doongi. 😴"},
+  {t:"Chai banaungi, phir tumhe uthaaungi. ☕"}],hint:"Hint: pyaar + thodi si shararat = ?"},
+ {q:"Q2. Kitne din mein mujhe pagal declare karogi? 😂❤️",story:"Chhota sa ghar, tum kaam mein busy, aur main baar-baar hug, kiss ya bas tumhe dekhne aa jaun. Shaam ko outing, kuch yummy aur ghar aakar faltu baatein…",options:[
+  {t:"Pehle din hi! Case bhi file kar doongi. 😭"},
+  {t:"Kabhi nahi — tumhari nautanki meri favourite hai. 🫶",ok:true},
+  {t:"Teen din mein, lekin phir bhi hug karungi. 😂"},
+  {t:"Main bhi tumse zyada nautanki karke dikhaungi. 😈"}],hint:"Hint: jis jawab mein tumhari favourite nautanki zinda rahe. 💗"},
+ {q:"Q3. Mandir mein saath khade hokar kya maangenge? 🥹🧿",story:"Main chahta hoon humara pyaar gehra ho, respect bani rahe aur difficult waqt mein hum ek doosre ke against nahi, saath khade rahein. Phir long drive, photos aur compliments. ❤️",options:[
+  {t:"Bas life easy ho, kabhi koi problem hi na aaye."},
+  {t:"Har baat mein meri hi chale. 😌"},
+  {t:"Pyaar, respect, understanding aur mushkil waqt mein ek-doosre ka saath. ❤️",ok:true},
+  {t:"Mandir se seedha photoshoot aur food date! 😂"}],hint:"Hint: perfect life nahi, ek-doosre ka saath. 🫂"},
+ {q:"Q4. Mini Radhika hui toh ghar mein kya hoga? 😭💗",story:"Woh tumhare nakhre aur meri nautanki dono le aaye… aur ek raat hum dono ke beech so jaaye, toh papa ko hug kaise milega? 😂",options:[
+  {t:"Papa ko floor par sula do, bed hum dono ka! 😂"},
+  {t:"Main aur mini Radhika milkar tumhari band bajayenge. 😈"},
+  {t:"Hum teeno adjust karenge — hugs aur pyaar sabke liye. 🫶",ok:true},
+  {t:"Usko pyaar se side kar dena, mujhe hug chahiye. 😭"}],hint:"Hint: sabse cute solution woh hai jahan sabko pyaar mile. 💗"},
+ {q:"Q5. Busy life mein kaunsi cheezein saath jeeni hain? ❤️",story:"Responsibilities hongi, din busy honge… phir bhi chai, random walks, mandir, chupchaap paas baithna aur poora din bakwaas. Kya yeh normal din bhi special honge?",options:[
+  {t:"Sirf big romantic surprises aur holidays."},
+  {t:"Jab time bache tabhi baat karenge."},
+  {t:"Chhoti-chhoti everyday moments bhi — chai, baatein, silence aur effort. ❤️",ok:true},
+  {t:"Bas tum plan banao, main rating de doongi. 😂"}],hint:"Hint: pyaar sirf special occasions nahi, everyday effort bhi hai. 🫂"}
+];
+let index=0, soundOn=true, audioCtx=null, locked=false;
+const $=id=>document.getElementById(id);
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function audio(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")audioCtx.resume();return audioCtx}
+function tone(freq,duration,type="sine",vol=.06,delay=0){if(!soundOn)return;try{const c=audio(),o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.setValueAtTime(freq,c.currentTime+delay);g.gain.setValueAtTime(.001,c.currentTime+delay);g.gain.exponentialRampToValueAtTime(vol,c.currentTime+delay+.02);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+delay+duration);o.connect(g);g.connect(c.destination);o.start(c.currentTime+delay);o.stop(c.currentTime+delay+duration+.04)}catch(e){}}
+function suspense(){[440,466,494,523,587].forEach((f,i)=>tone(f,.22,"triangle",.035,i*.13))}
+function correctSound(){tone(523,.18,"sine",.06);tone(659,.2,"sine",.06,.12);tone(784,.32,"sine",.06,.25)}
+function wrongSound(){tone(190,.18,"sawtooth",.035);tone(155,.22,"sawtooth",.03,.12)}
+function render(){
+ const q=questions[index];locked=false;$("nextBtn").classList.add("hidden");$("feedback").textContent="";$("hint").textContent=q.hint;
+ $("stepPill").textContent=`Question ${index+1} of ${questions.length}`;$("bar").style.width=`${index/questions.length*100}%`;
+ $("qnum").textContent=`SAWAAL 0${index+1}`;$("question").textContent=q.q;$("story").textContent=q.story;
+ const opts=shuffle(q.options.map(x=>({...x})));const box=$("options");box.innerHTML="";
+ opts.forEach((o,i)=>{const b=document.createElement("button");b.className="option";b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span></span>`;b.querySelector("span:last-child").textContent=o.t;b.addEventListener("click",()=>choose(b,o));box.appendChild(b)});
+ suspense();
+}
+function choose(btn,opt){
+ if(locked)return;
+ if(opt.ok){locked=true;btn.classList.add("correct");$("feedback").textContent="Awww, bilkul dil wala answer! 🥹❤️";$("hint").textContent="Madam ji ne dil jeet liya. Ab agla sawaal…";[...$("options").children].forEach(b=>b.disabled=true);correctSound();$("nextBtn").classList.remove("hidden");$("nextBtn").textContent=index===questions.length-1?"Ab dil ki baat likho 💌":"Agla sawaal ❤️"}
+ else{btn.classList.add("wrong");wrongSound();$("feedback").textContent=shuffle(["Oho! Suspense abhi khatam nahi hua. Ek aur try! 😤💗","Hmm… madam ji, dil se socho aur phir try karo. 😂","Not quite! Options badalne nahi, answer dhoondhna hai. 👀❤️","Arre wah, plot twist! Ek aur chance. 😭🫶"])[0];setTimeout(()=>{btn.classList.remove("wrong");btn.disabled=true;btn.style.opacity=".62"},420);
+ // Re-shuffle the still-available choices after an incorrect try, preserving the same question.
+ setTimeout(()=>{if(!locked){const box=$("options");const remaining=[...box.children].filter(b=>!b.disabled);shuffle(remaining).forEach(b=>box.appendChild(b));}},450);
+ }
+}
+$("startBtn").addEventListener("click",()=>{audio();$("intro").classList.add("hidden");$("quiz").classList.remove("hidden");index=0;render();window.scrollTo({top:0,behavior:"smooth"})});
+$("nextBtn").addEventListener("click",()=>{if(index<questions.length-1){index++;render();window.scrollTo({top:0,behavior:"smooth"})}else{$("quiz").classList.add("hidden");$("notePanel").classList.remove("hidden");$("bar").style.width="100%";correctSound();window.scrollTo({top:0,behavior:"smooth"})}});
+$("soundBtn").addEventListener("click",()=>{soundOn=!soundOn;$("soundBtn").textContent=soundOn?"🔊 Sound on":"🔇 Sound off";$("soundBtn").setAttribute("aria-pressed",String(soundOn));if(soundOn){audio();tone(660,.15)}});
+function buildNote(){return `💗 FUTURE MRS. — DIL KI BAAT 💗\n\n🌙 Mere sapne aur future wishes:\n${$("dreams").value.trim()||"(abhi nahi likha)"}\n\n💌 Meri feelings:\n${$("feelings").value.trim()||"(abhi nahi likha)"}\n\n🍓 Meri favourite things:\n${$("favorites").value.trim()||"(abhi nahi likha)"}\n\n🫶 Mujhe pyaar kaise feel hota hai:\n${$("needs").value.trim()||"(abhi nahi likha)"}\n\n❤️ Mere liye personal note:\n${$("note").value.trim()||"(abhi nahi likha)"}\n\n— pyaar se, tumhari Future Mrs. 💋`}
+$("saveBtn").addEventListener("click",()=>{$("result").textContent=buildNote();$("result").classList.remove("hidden");$("copyBtn").textContent="Note copy karo 💌";correctSound()});
+$("copyBtn").addEventListener("click",async()=>{const txt=buildNote();try{await navigator.clipboard.writeText(txt);$("copyBtn").textContent="Copied! ❤️"}catch(e){$("result").textContent=txt;$("result").classList.remove("hidden");$("copyBtn").textContent="Neeche se select karke copy karo"}})
+$("restartBtn").addEventListener("click",()=>{index=0;$("notePanel").classList.add("hidden");$("intro").classList.remove("hidden");$("result").classList.add("hidden");window.scrollTo({top:0,behavior:"smooth"})});
+const f=$("floaties");for(let i=0;i<18;i++){const s=document.createElement("span");s.textContent=["💗","♡","✨","💕","🫶"][i%5];s.style.left=Math.random()*100+"%";s.style.animationDuration=(8+Math.random()*12)+"s";s.style.animationDelay=(-Math.random()*15)+"s";f.appendChild(s)}
+</script>
+</body>
+</html>
